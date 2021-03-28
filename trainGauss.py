@@ -71,7 +71,7 @@ def exp_decay(epoch,lr):
 
 def build_model():
   inputs = tf.keras.Input(shape=(RESIZE_TO, RESIZE_TO, 3))
-  x = tf.keras.layers.GaussianNoise(1.3)(inputs)
+  x = tf.keras.layers.GaussianNoise(0.6)(inputs)
   model = EfficientNetB0(include_top=False, input_tensor=x,pooling = 'avg', weights='imagenet')
   model.trainable = False
   x = tf.keras.layers.Flatten()(model.output)
