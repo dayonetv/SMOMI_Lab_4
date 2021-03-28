@@ -43,10 +43,10 @@ def parse_proto_example(proto):
 
 
 def contrast(image, label):
-  return tf.image.adjust_contrast(image, 1), label
+  return tf.image.adjust_contrast(image, 2), label
 
 def brightness(image, label):
-  return tf.image.adjust_brightness(image, delta=0.1), label
+  return tf.image.adjust_brightness(image, delta=0.3), label
 
 
 def create_dataset(filenames, batch_size):
