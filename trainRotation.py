@@ -80,7 +80,7 @@ def build_model():
   inputs = tf.keras.Input(shape=(RESIZE_TO, RESIZE_TO, 3))
 #  x = tf.keras.layers.experimental.preprocessing.RandomCrop(200,200)(inputs)
 #  x = tf.keras.layers.experimental.preprocessing.Resizing(224,224)(x)
-  rot_img = tf.keras.layers.experimental.preprocessing.RandomRotation(factor = (0.0, 0.02))(inputs)
+  rot_img = tf.keras.layers.experimental.preprocessing.RandomRotation(factor = 0.02)(inputs)
   model = EfficientNetB0(include_top=False, input_tensor=rot_img, pooling = 'avg', weights='imagenet')
   model.trainable = False
   x = tf.keras.layers.Flatten()(model.output)
