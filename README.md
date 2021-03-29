@@ -124,14 +124,14 @@ fill_mode - режим заполнения (reflect - входные данны
 ### В результате получили следующие графики в сравнении с поворотом изображения на случайный угол без использования режимов заполнения:  
 + График метрики точности для предобученной нейронной сети EfficientNet-B0 (влияние режимов заполнения) для валидационного набора данных:
 
-![legend_accuracy_brigthness_contrast](https://user-images.githubusercontent.com/59259102/112815848-6b4c1680-9089-11eb-9ef2-a06840cf72f3.png)  
+![изображение](https://user-images.githubusercontent.com/59259102/112891622-06240f80-90e1-11eb-91d9-5defaf85b56a.png)   
 
 <img src="./epoch_categorical_accuracy_fill_mode.svg">
 
 * График функции потерь для предобученной нейронной сети EfficientNet-B0 (влияние режимов заполнения) для валидационного набора данных:  
 
-![legend_loss_brightness_contrast](https://user-images.githubusercontent.com/59259102/112822862-29bf6980-9091-11eb-8989-d7d83ce88fc8.png)  
- 
+![изображение](https://user-images.githubusercontent.com/59259102/112891679-176d1c00-90e1-11eb-8c44-29a1e4497b66.png)  
+
 
 <img src="./epoch_loss_fill_mode.svg">  
 
