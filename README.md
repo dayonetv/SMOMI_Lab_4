@@ -40,13 +40,13 @@ def brightness(image, label):
 
 ![image](https://user-images.githubusercontent.com/59259102/111873982-af5d5e00-899b-11eb-8f80-35178da69f9a.png)
 
-<img src="./epoch_categorical_accuracy_for_different_lr.svg">
+<img src="./epoch_categorical_accuracy_brigtness_contrast.svg">
 
 * График функции потерь для предобученной нейронной сети EfficientNet-B0 (манипуляция с яркостью и контрастом) для валидационного набора данных:  
 
 ![image](https://user-images.githubusercontent.com/59259102/111874005-d2880d80-899b-11eb-8d5d-6e3d925b8b21.png)
 
-<img src="./epoch_loss_for_different_lr.svg">
+<img src="./epoch_loss_brightness_contrast.svg">
 
 
 * Анализ полученных результатов  
