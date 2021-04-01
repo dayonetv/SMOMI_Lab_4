@@ -38,7 +38,7 @@ def parse_proto_example(proto):
   example = tf.io.parse_single_example(proto, keys_to_features)
   example['image'] = tf.image.decode_jpeg(example['image/encoded'], channels=3)
   example['image'] = tf.image.convert_image_dtype(example['image'], dtype=tf.uint8)
-  example['image'] = tf.image.resize(example['image'], tf.constant([RESIZE_TO, RESIZE_TO]))
+  example['image'] = tf.image.resize(example['image'], tf.constant([250, 250]))
   return example['image'], tf.one_hot(example['image/label'], depth=NUM_CLASSES)
 
 
@@ -48,9 +48,16 @@ def normalize(image, label):
 def contrast(image, label):
   return tf.image.adjust_contrast(image, 2), label
 
+def process_data(image, label):
+  img = tf.image.adjust_contrast(image, 2)
+  img = tf.image.adjust_brightness(img, 0.3)
+  return tf.image.random_crop(img, [224, 224, 3]), label
+
+def crop(image, label):
+  return tf.image.random_crop(image, [224, 224, 3]), label
 
 def brightness(image, label):
-  return tf.image.adjust_brightness(image, delta=0.1), label
+  return tf.image.adjust_brightness(image, delta=0.3), label
 
 
 def create_dataset(filenames, batch_size):
@@ -61,6 +68,7 @@ def create_dataset(filenames, batch_size):
   return tf.data.TFRecordDataset(filenames)\
     .map(parse_proto_example, num_parallel_calls=tf.data.AUTOTUNE)\
     .cache()\
+    .map(crop)\
     .batch(batch_size)\
     .prefetch(tf.data.AUTOTUNE)
 
@@ -72,12 +80,9 @@ def exp_decay(epoch,lr):
   return lrate
 
 
-
 def build_model():
   inputs = tf.keras.Input(shape=(RESIZE_TO, RESIZE_TO, 3))
-  x = tf.keras.layers.experimental.preprocessing.Resizing(235,235)(inputs)
-  x = tf.keras.layers.experimental.preprocessing.RandomCrop(224,224)(x)
-  model = EfficientNetB0(include_top=False, input_tensor=x,pooling = 'avg', weights='imagenet')
+  model = EfficientNetB0(include_top=False, input_tensor = inputs, pooling = 'avg', weights='imagenet')
   model.trainable = False
   x = tf.keras.layers.Flatten()(model.output)
   outputs = tf.keras.layers.Dense(NUM_CLASSES, activation = tf.keras.activations.softmax)(x)
