@@ -167,6 +167,7 @@ example['image'] = tf.image.resize(example['image'], tf.constant([250, 250]))
 
 ![изображение](https://user-images.githubusercontent.com/59259102/113308816-35b85f00-930f-11eb-87ad-4048c7ea2d4c.png)  
 
+<img src="./epoch_loss_crop.svg">  
 
 * Анализ полученных результатов 
 Исходя из полученных результатов в качестве оптимальных параметров можно использовать: height = 250, width = 250 (высота (height) и ширина (width), которые будут у выходного изображения после применения слоя ```Resizing``` для масштабирования).
