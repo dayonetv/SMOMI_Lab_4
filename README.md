@@ -159,7 +159,7 @@ example['image'] = tf.image.resize(example['image'], tf.constant([250, 250]))
 #### В результате получили следующие графики в сравнении с политикой экспоненциального затухания с оптимальными параметрами initial_lrate = 0.01 и k = 0.3 без аугментации данных:  
 + График метрики точности для предобученной нейронной сети EfficientNet-B0 (использование случайной части изображения) для валидационного набора данных:
 
-![legend_accuracy_crop](https://user-images.githubusercontent.com/59259102/112820011-dac40500-908d-11eb-8585-9e9b5fd0eaef.png)  
+<img src="./epoch_categorical_accuracy_crop.svg">
  
 ![изображение](https://user-images.githubusercontent.com/59259102/113308730-220cf880-930f-11eb-9290-d85389ddb1bc.png)  
 
